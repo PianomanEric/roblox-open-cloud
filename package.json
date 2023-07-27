@@ -1,0 +1,28 @@
+{
+  "name": "roblox-open-cloud",
+  "version": "1.0.0",
+  "description": "A TypeScript package to simplify the use of Roblox's Open Cloud API.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PianomanEric/roblox-open-cloud.git"
+  },
+  "author": "Eric Falk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PianomanEric/roblox-open-cloud/issues"
+  },
+  "homepage": "https://github.com/PianomanEric/roblox-open-cloud#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
