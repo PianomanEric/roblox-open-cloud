@@ -4,7 +4,6 @@ import { DataStore, OrderedDataStore, DataStorePages } from './datastore';
 const BASE_URL = 'https://apis.roblox.com';
 
 export class Universe {
-
     universeId: number;
     apiKey: string;
     client: AxiosInstance;
@@ -16,9 +15,9 @@ export class Universe {
             baseURL: BASE_URL,
             timeout: 1000,
             headers: {
-                'x-api-key': apiKey
-            }
-        })
+                'x-api-key': apiKey,
+            },
+        });
     }
 
     getDataStore(name: string, scope?: string): DataStore {
@@ -36,13 +35,15 @@ export class Universe {
     }
 
     async publishMessageAsync(topic: string, message: string): Promise<void> {
-        return this.client.post(`/messaging-service/v1/universes/${this.universeId}/topics/${topic}`, {
-            message: message
-        }).then(() => {
-            return;
-        }).catch((error) => {
-            throw error;
-        });
+        return this.client
+            .post(`/messaging-service/v1/universes/${this.universeId}/topics/${topic}`, {
+                message,
+            })
+            .then(() => {
+                return;
+            })
+            .catch((error) => {
+                throw error;
+            });
     }
-    
 }

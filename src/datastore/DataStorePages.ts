@@ -1,7 +1,6 @@
-import { Universe } from "../Universe";
+import { Universe } from '../Universe';
 
 export class DataStorePages {
-
     universe: Universe;
     limit: number;
     prefix?: string;
@@ -22,21 +21,23 @@ export class DataStorePages {
             this.currentPage = [];
             return;
         }
-        return this.universe.client.get(this.path, {
-            params: {
-                cursor: this.cursor,
-                limit: this.limit,
-                prefix: this.prefix,
-            }
-        }).then((response) => {
-            this.currentPage = response.data.datastores;
-            this.cursor = response.data.nextPageCursor;
-            if (!this.cursor) {
-                this.isFinished = true;
-            }
-        }).catch((error) => {
-            throw error;
-        });
+        return this.universe.client
+            .get(this.path, {
+                params: {
+                    cursor: this.cursor,
+                    limit: this.limit,
+                    prefix: this.prefix,
+                },
+            })
+            .then((response) => {
+                this.currentPage = response.data.datastores;
+                this.cursor = response.data.nextPageCursor;
+                if (!this.cursor) {
+                    this.isFinished = true;
+                }
+            })
+            .catch((error) => {
+                throw error;
+            });
     }
-    
 }

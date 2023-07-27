@@ -1,8 +1,7 @@
-import { DataStore } from "./DataStore";
-import { OpenCloudError } from "../OpenCloudError";
+import { DataStore } from './DataStore';
+import { OpenCloudError } from '../OpenCloudError';
 
 export class DataStoreKeyPages {
-
     isFinished: boolean = false;
     cursor: string | null = null;
     datastore: DataStore;
@@ -25,24 +24,26 @@ export class DataStoreKeyPages {
             this.currentPage = [];
             return;
         }
-        return this.datastore.universe.client.get(this.path + '/datastore/entries', {
-            params: {
-                datastoreName: this.datastore.name,
-                scope: (!this.allScopes) ? this.datastore.scope : undefined,
-                allScopes: this.allScopes,
-                cursor: this.cursor,
-                limit: this.limit,
-                prefix: this.prefix,
-            }
-        }).then((response) => {
-            this.currentPage = response.data.keys;
-            this.cursor = response.data.nextPageCursor;
-            if (!this.cursor) {
-                this.isFinished = true;
-            }
-        }).catch((error) => {
-            throw OpenCloudError.fromResponse(error?.response);
-        });
+        return this.datastore.universe.client
+            .get(this.path + '/datastore/entries', {
+                params: {
+                    datastoreName: this.datastore.name,
+                    scope: !this.allScopes ? this.datastore.scope : undefined,
+                    allScopes: this.allScopes,
+                    cursor: this.cursor,
+                    limit: this.limit,
+                    prefix: this.prefix,
+                },
+            })
+            .then((response) => {
+                this.currentPage = response.data.keys;
+                this.cursor = response.data.nextPageCursor;
+                if (!this.cursor) {
+                    this.isFinished = true;
+                }
+            })
+            .catch((error) => {
+                throw OpenCloudError.fromResponse(error?.response);
+            });
     }
-    
 }

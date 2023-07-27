@@ -1,9 +1,8 @@
 export class DataStoreKeyInfo {
-    
     createdTime: string;
     updatedTime: string;
     version: string;
-    attributes: {};
+    attributes: object;
     userIds: number[];
 
     constructor(createdTime: string, updatedTime: string, version: string, attributes: string, userIds: string) {
@@ -13,5 +12,4 @@ export class DataStoreKeyInfo {
         this.attributes = attributes ? JSON.parse(attributes) : {};
         this.userIds = userIds ? JSON.parse(userIds) : [];
     }
-
 }

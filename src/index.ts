@@ -6,7 +6,7 @@ export {
     DataStorePages,
     DataStoreSetOptions,
     OrderedDataStore,
-    OrderedDataStoreEntryPages
+    OrderedDataStoreEntryPages,
 } from './datastore';
 
 export { Universe } from './Universe';

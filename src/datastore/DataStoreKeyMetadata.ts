@@ -1,7 +1,6 @@
 export class DataStoreKeyMetadata {
-    
     userIds: number[] = [];
-    attributes: {} = {};
+    attributes: object = {};
 
     getUserIdsJSON(): string {
         return JSON.stringify(this.userIds);
@@ -10,5 +9,4 @@ export class DataStoreKeyMetadata {
     getAttributesJSON(): string {
         return JSON.stringify(this.attributes);
     }
-
 }
