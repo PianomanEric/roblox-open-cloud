@@ -4,7 +4,7 @@
   "description": "A TypeScript package to simplify the use of Roblox's Open Cloud API.",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "jest --config jest.config.json",
+    "test": "jest --silent=false --config jest.config.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.{ts,js,json}\"",
     "lint": "eslint -c .eslintrc.js --ext .ts src",

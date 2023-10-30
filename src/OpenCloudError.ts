@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
 
-export class OpenCloudError {
+export class OpenCloudError extends Error {
     type: string;
-    message: string;
 
     constructor(type: string, message: string) {
+        super(message);
         this.type = type;
-        this.message = message;
+        //this.message = message;
     }
 
     static fromResponse(response: AxiosResponse): OpenCloudError {
