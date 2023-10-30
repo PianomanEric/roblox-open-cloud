@@ -4,10 +4,15 @@
   "description": "A TypeScript package to simplify the use of Roblox's Open Cloud API.",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jest.config.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.{ts,js,json}\"",
-    "lint": "eslint -c .eslintrc.js --ext .ts src"
+    "lint": "eslint -c .eslintrc.js --ext .ts src",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -24,6 +29,7 @@
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsdoc": "^46.4.4",
